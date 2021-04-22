@@ -89,8 +89,9 @@ export default class MapComponent extends Component {
           >
           {this.state.markers.map((marker) =>{
             return (
-             
-              <Marker  key={marker.key} {...marker} />
+              <Marker  
+              key={marker.key} {...marker}
+              />
             )
           })}
         </MapView>
@@ -104,3 +105,6 @@ export default class MapComponent extends Component {
                   <Text style={styles.text}>{marker.elevation}</Text>
                 </View>
               </Marker> */}
+
+
+// I tried some things here, but reverted them all back.  Udsing this comment as the change for the commit. Tamara
