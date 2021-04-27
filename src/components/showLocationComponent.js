@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-
+import React, {useState, useEffect, useContext} from 'react';
+import {ElevationContext} from '../Contexts/elevationContext';
 // import all the components we are going to use
 import {
   SafeAreaView,
@@ -17,14 +17,19 @@ import Geolocation from 'react-native-geolocation-service';
 
 const LocationDisplay = () => {
 
+  const [locationStatus, 
+         setLocationStatus,
+         currentLongitude, 
+         setCurrentLongitude,
+         currentLatitude, 
+         setCurrentLatitude,
+         currentAltitude, 
+         setCurrentAltitude,
+         currentElevation, 
+         setCurrentElevation] = useContext(ElevationContext);
+ 
   
-  const [currentLongitude, setCurrentLongitude] = useState(0);
-  const [currentLatitude, setCurrentLatitude] = useState(0);
-  const [locationStatus, setLocationStatus] = useState('');
-  const [currentAltitude, setCurrentAltitude] = useState('...')
-  const [currentElevation, setCurrentElevation] = useState(0)
-  const [latLang, setLatLang] = useState([currentLongitude,currentLatitude])
-
+  
 
   useEffect( async () => {
     console.log(currentLongitude)
@@ -73,11 +78,11 @@ const LocationDisplay = () => {
   }, []);
 
   const getOneTimeLocation = () => {
-    setLocationStatus('Getting Location ...');
+    setLocationStatus(currentElevation);
     Geolocation.getCurrentPosition(
       //Will give you the current location
       position => {
-        setLocationStatus('You are Here');
+        setLocationStatus(currentElevation);
 
         //getting the Longitude from the location json
         const currentLongitude = JSON.stringify(position.coords.longitude);
@@ -109,7 +114,7 @@ const LocationDisplay = () => {
       position => {
         //Will give you the location on location change
 
-        setLocationStatus('You are Here');
+        setLocationStatus('You are Herenb.k');
         console.log(position);
 
         //getting the Longitude from the location json
@@ -138,70 +143,72 @@ const LocationDisplay = () => {
 
   return (
     <SafeAreaView >
-      <View style={styles.elevation}>
-        <Text
-            style={{
-              justifyContent: 'center',
-              alignItems: 'center',
-            
-              color: 'green',
-              fontSize: 16,
-            }}>
-            Elevation: {currentElevation}
-            
-          </Text>
-        </View>
-      <View>
-        <View style={styles.container}>
-          {/* <Image
-            source={{
-              uri:
-                'https://raw.githubusercontent.com/AboutReact/sampleresource/master/location.png',
-            }}
-            style={{width: 30, height: 30}}
-          /> */}
-          {/* <Text style={styles.boldText}>
-            {locationStatus}
-          </Text> */}
-          <Text
-            style={{
-              justifyContent: 'center',
-              alignItems: 'center',
-              marginTop: 5,
-              color: 'red',
-              fontSize: 16,
-            }}>
-            Longitude: {currentLongitude}
-          </Text>
-          <Text
-            style={{
-              justifyContent: 'center',
-              alignItems: 'center',
-              marginTop: 5,
-              color: 'green',
-              fontSize: 16,
-            }}>
-            Latitude: {currentLatitude}
-            
-          </Text>
-          <Text
-            style={{
-              justifyContent: 'center',
-              alignItems: 'center',
-              marginTop: 5,
-              color: 'green',
-              fontSize: 16,
-            }}>
-            Altitude: {currentAltitude}
-            
-          </Text>
-        
-          <View style={{marginTop: 20}}>
-            <Button title="Current Location" onPress={getOneTimeLocation} />
-          </View>
-          
-        </View>
-      </View>
+  
+   <View style={styles.elevation}>
+<Text
+    style={{
+      justifyContent: 'center',
+      alignItems: 'center',
+    
+      color: 'green',
+      fontSize: 16,
+    }}>
+    Elevation: {currentElevation}
+    
+  </Text>
+</View>
+<View>
+<View style={styles.container}>
+  {/* <Image
+    source={{
+      uri:
+        'https://raw.githubusercontent.com/AboutReact/sampleresource/master/location.png',
+    }}
+    style={{width: 30, height: 30}}
+  /> */}
+  {/* <Text style={styles.boldText}>
+    {locationStatus}
+  </Text> */}
+  <Text
+    style={{
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginTop: 5,
+      color: 'red',
+      fontSize: 16,
+    }}>
+    Longitude: {currentLongitude}
+  </Text>
+  <Text
+    style={{
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginTop: 5,
+      color: 'green',
+      fontSize: 16,
+    }}>
+    Latitude: {currentLatitude}
+    
+  </Text>
+  <Text
+    style={{
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginTop: 5,
+      color: 'green',
+      fontSize: 16,
+    }}>
+    Altitude: {currentAltitude}
+    
+  </Text>
+
+  <View style={{marginTop: 20}}>
+    <Button title="Current Location" onPress={getOneTimeLocation} />
+  </View>
+  
+</View>
+</View> 
+  
       
     </SafeAreaView>
   );
@@ -232,3 +239,5 @@ const styles = StyleSheet.create({
 });
 
 export default LocationDisplay;
+
+ 

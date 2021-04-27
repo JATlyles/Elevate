@@ -2,6 +2,9 @@ import React, {useState, useEffect } from 'react';
 import {PermissionsAndroid, Platform} from 'react-native';
 import MapComponent from '../../components/mapComponent';
 import LocationDisplay from '../../components/showLocationComponent'
+import {ElevationProvider} from '../../Contexts/elevationContext';
+
+
 const MapScreen = () => {
 
   const [hasMapPermissions, setHasMapPermissions] = useState(false)
@@ -26,16 +29,23 @@ const MapScreen = () => {
   }
 
   return (
-    <>
-      {hasMapPermissions? <>
-        <LocationDisplay/>
-        <MapComponent/>
-      </>:null}
-    </>
+    
+        <ElevationProvider>
+
+          {hasMapPermissions? <>
+          <LocationDisplay/>
+          <MapComponent/>
+          </>:null}
+        </ElevationProvider>
+   
   )
 };
 
  export default MapScreen;
+
+
+ 
+
 
 // import React, { Component } from 'react';
 // import { Text, View, StyleSheet, PermissionsAndroid, Platform } from 'react-native';

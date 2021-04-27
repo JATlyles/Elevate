@@ -49,6 +49,9 @@
 import React, {Component} from 'react';
 import MapView, { View, Text, PROVIDER_GOOGLE, Marker, Callout } from 'react-native-maps';
 import {styles} from './style';
+import CustomMarker from './customMarker'
+import {ElevationContext} from '../Contexts/elevationContext';
+
 export default class MapComponent extends Component {
   constructor(props) {
     super(props);
@@ -90,7 +93,9 @@ export default class MapComponent extends Component {
           {this.state.markers.map((marker) =>{
             return (
              
-              <Marker  key={marker.key} {...marker} />
+              <Marker  key={marker.key} {...marker} >
+              <CustomMarker/>
+              </Marker>
             )
           })}
         </MapView>
