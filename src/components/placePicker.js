@@ -22,7 +22,7 @@ class Maps extends React.Component {
 
     onMarkerCalloutPress = () => {
         let elevateCoordinates = this.state.markerLat + "," + this.state.markerLon;
-        let elevationCoordinates = elevCoordinates.toString();
+        let elevationCoordinates = elevateCoordinates.toString();
         console.log(elevationCoordinates);
         return fetch(`https://maps.googleapis.com/maps/api/elevation/json?locations=${elevationCoordinates}&key=AIzaSyD3pCgrdlCaWjT_AIe13jaeKf4zfpGK8R4`)
             .then((response) => response.json())
