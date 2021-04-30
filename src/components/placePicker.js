@@ -4,7 +4,7 @@ import MapView, { Callout, Marker, PROVIDER_GOOGLE } from "react-native-maps";
 
 
 // const elevator = new google.maps.ElevationService();
-export default class App extends React.Component {
+export default class PLacePicker extends React.Component {
     constructor(props) {
         super(props)
         this.onMarkerCalloutPress = this.onMarkerCalloutPress.bind(this);
