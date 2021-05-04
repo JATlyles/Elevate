@@ -81,7 +81,7 @@ export default class Placepicker extends React.Component {
                 showsCompass={true}
                 zoomEnabled={true}
                 pitchEnabled={true}
-                showsBuildings={true}
+                // showsBuildings={true}
                 // showsTraffic={true}
                 // showsIndoors={true}
                 showsPointsOfInterest={false}
@@ -99,7 +99,7 @@ export default class Placepicker extends React.Component {
                         marker: e.nativeEvent.coordinate
                     })}>
                 <Marker key={1} coordinate={{ latitude: this.state.userLatitude, longitude: this.state.userLongitude }} >
-                    <Callout onCalloutPress={this.onUserLocationMarkerCalloutPress}>
+                    <Callout onPress={this.onUserLocationMarkerCalloutPress}>
                         <Text>Lat:{this.state.userLatitude}</Text>
                         <Text>lon:{this.state.userLongitude}</Text>
                         <Text>Elevation:{this.state.userElevation}</Text>
@@ -108,12 +108,8 @@ export default class Placepicker extends React.Component {
                 {
                     this.state.marker &&
                     <MapView.Marker coordinate={this.state.marker} pinColor={'teal'}>
-                        <MapView.Callout>
-                            <View>
-                                <Text>This is a plain view</Text>
-                            </View>
-                        </MapView.Callout>
-                        <Callout key={2} onCalloutPress={this.onMarkerCalloutPress}>
+
+                        <Callout key={2} onPress={this.onMarkerCalloutPress}>
                             <Text>Click marker,tag, marker to get elevation</Text>
                             <Text>Lat:{this.state.markerLat}</Text>
                             <Text>lon:{this.state.markerLon}</Text>

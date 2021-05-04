@@ -7,6 +7,7 @@ import com.airbnb.android.react.maps.MapsPackage;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
 import com.agontuk.RNFusedLocation.RNFusedLocationPackage;
+
 import com.th3rdwave.safeareacontext.SafeAreaContextPackage;
 import com.swmansion.rnscreens.RNScreensPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
@@ -33,7 +34,7 @@ public class MainApplication extends Application implements ReactApplication {
               return Arrays.<ReactPackage>asList(
                       new MainReactPackage(),
             new RNFusedLocationPackage(),
-            new SafeAreaContextPackage(),
+                      new SafeAreaContextPackage(),
             new RNScreensPackage(),
             new RNGestureHandlerPackage(),
                       new MapsPackage()

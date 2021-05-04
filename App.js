@@ -1,9 +1,50 @@
-import * as React from 'react';
-import {Text, View} from 'react-native';
-import Nav from './src/Navigation/navigator';
+import React, { Component } from "react";
+import {
+    Text,
+    StyleSheet,
+    View,
+    PermissionsAndroid,
+    Platform
+} from "react-native";
+// import PickLocation from "./MapScreenTwo";
+import MapScreen from "./MapScreen";
+import Geolocation from 'react-native-geolocation-service';
 
-function App() {
-  return <Nav />;
+export default class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            hasMapPermission: false
+        };
+    }
+
+    componentDidMount() {
+        this.requestFineLocation();
+    }
+
+    async requestFineLocation() {
+        try {
+            if (Platform.OS === "android") {
+                const granted = await PermissionsAndroid.request(
+                    PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
+                );
+                if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+                    this.setState({ hasMapPermission: true });
+                }
+            } else {
+                this.setState({ hasMapPermission: true });
+            }
+        } catch (err) {
+            console.warn(err);
+        }
+    }
+
+    render() {
+        if (this.state.hasMapPermission) {
+            return <MapScreen />;
+        }
+        return null;
+    }
 }
-export default App;
 
+const styles = StyleSheet.create({});
