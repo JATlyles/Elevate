@@ -53,10 +53,10 @@ function AboutScreen({ route }) {
     <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
 
       <View style={styles.container}>
-        <Text style={{ margin: 20 }}>HEIGHT is the vertical distance of a point to a horizontal surface. ELEVATION is the height of a point above (or below) sea level. SEA LEVEL or, as it is more usually called, mean sea level, is the average height of the surface of the sea.</Text>
+        <Text style={{ margin: 10, marginTop: 60 }}>HEIGHT is the vertical distance of a point to a horizontal surface. ELEVATION is the height of a point above (or below) sea level. SEA LEVEL or, as it is more usually called, mean sea level, is the average height of the surface of the sea.</Text>
         <Image
           source={elevationExplanation}
-          style={styles.image}
+          style={{ width: '100%', height: 350, alignSelf: 'center', padding: 20, resizeMode: "contain" }}
         />
       </View>
     </SafeAreaView>
@@ -98,9 +98,11 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
+    ...StyleSheet.absoluteFillObject,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-});
 
+  },
+
+});

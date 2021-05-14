@@ -18,6 +18,8 @@ const onUserLocationMarker = async () => {
     }
 
 }
+
+const locations = require('./locations.json');
 export default class MapScreen extends React.Component {
     constructor(props) {
         super(props);
@@ -68,8 +70,8 @@ export default class MapScreen extends React.Component {
                 console.log(error.code, error.message);
             },
             { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000, fastestInterval: 5000, showsBackgroundLocationIndicator: true, showLocationDialog: true }
-        ),
-            onUserLocationMarker;
+        )
+
     }
 
     onUserLocationMarker = async () => {
@@ -136,7 +138,6 @@ export default class MapScreen extends React.Component {
                     loadingEnabled={true}
                     scrollDuringRotateOrZoomEnabled={false}
                     zoomControlEnabled={true}
-                    zoomEnabled={true}
                     moveOnMarkerPress={false}
                     showsCompass={true}
                     zoomEnabled={true}
